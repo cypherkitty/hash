@@ -4,7 +4,7 @@
     <title>Hashimoto</title>
     <script>
         const hash = async () => {
-          console.log("Hashimoto san!);
+          console.log("Hashimoto san!");
           let string = document.getElementById("plainText");
           const utf8 = new TextEncoder().encode(string);
           const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
