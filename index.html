@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <title>Hashimoto</title>
     <script>
-        hash = async () => { 
+        const hash = async () => { 
           let string = document.getElementById("plainText");
           const utf8 = new TextEncoder().encode(string);
           const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
