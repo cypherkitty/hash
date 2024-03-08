@@ -3,7 +3,8 @@
     <meta charset="utf-8">
     <title>Hashimoto</title>
     <script>
-        const hash = async () => { 
+        const hash = async () => {
+          console.log("Hashimoto san!);
           let string = document.getElementById("plainText");
           const utf8 = new TextEncoder().encode(string);
           const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
@@ -11,6 +12,7 @@
           const hashHex = hashArray
             .map((bytes) => bytes.toString(16).padStart(2, '0'))
             .join('');
+            document.getElementById('output').innerText = hashHex;
           return hashHex;
         }
     </script>
@@ -21,6 +23,7 @@
     <p style="color: red">Hash hash, calc calc</p>
     <input type="text" id="plainText" max=50 size=50>
     <button onclick="hash()">Calc</button>
+    <div id="output"></div>
 </div>
 </body>
 
