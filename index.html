@@ -2,27 +2,25 @@
 <head>
     <meta charset="utf-8">
     <title>Nervo Bot</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        async function hash() {
+          let string = document.getElementById("plainText");
+          const utf8 = new TextEncoder().encode(string);
+          const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+          const hashHex = hashArray
+            .map((bytes) => bytes.toString(16).padStart(2, '0'))
+            .join('');
+          return hashHex;
+        }
+    </script>
 </head>
 
 <body>
 <div style="display: flex;align-items: center;flex-wrap: nowrap;justify-content: center;">
-    <p style="color: red">Nasalnika</p>
-</div>
-<div style="display: flex;align-items: center;flex-wrap: nowrap;justify-content: center;">
-    <p style="color: blue">Nasalnika</p>
-</div>
-<div style="display: flex;align-items: center;flex-wrap: nowrap;justify-content: center;">
-    <p style="color: green">Nasalnika</p>
-</div>
-<div style="display: flex;align-items: center;flex-wrap: nowrap;justify-content: center;">
-    <p style="color: grey">Nasalnika</p>
-</div>
-<div style="display: flex;align-items: center;flex-wrap: nowrap;justify-content: center;">
-    <p style="color: silver">Nasalnika</p>
-</div>
-<div style="display: flex;align-items: center;flex-wrap: nowrap;justify-content: center;">
-    <p style="color: brown">Nasalnika</p>
+    <p style="color: red">Hash hash, calc calc</p>
+    <input type="text" id="plainText" max=10 size=10>
+    <button onclick="hash()">Click me</button>
 </div>
 </body>
 
